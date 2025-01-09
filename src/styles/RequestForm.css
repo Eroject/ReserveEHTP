@@ -1,0 +1,157 @@
+#information {
+  display: flex; /* Active le layout flexbox */
+  align-items: center; /* Aligne les éléments verticalement au centre */
+  justify-content: space-between; /* Espacement uniforme entre les éléments */
+  gap: 1rem; /* Espacement horizontal entre les éléments */
+  margin-bottom: 0.7%; /* Espacement sous le conteneur */
+}
+
+#information > * {
+  flex: 1; /* Tous les éléments partagent un espace égal */
+  max-width: 200px; /* Limite la largeur pour éviter les débordements */
+}
+
+#information .dropdown,
+#information .calendar,
+#information .time-picker {
+  width: 100%; /* S'assure que les composants s'adaptent à leur conteneur */
+}
+
+#information .dropdown select,
+#information .calendar input,
+#information .time-picker input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 14px;
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
+  background-color: #F9FAFB;
+  color: #111827;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#information .dropdown select:focus,
+#information .calendar input:focus,
+#information .time-picker input:focus {
+  border-color: #7C3AED; /* Violet pour focus */
+  box-shadow: 0 0 4px #7C3AED;
+}
+
+
+  #eventInput label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#eventInput input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 16px;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    background-color: #F9FAFB;
+    color: #111827;
+    transition: border-color 0.2s, box-shadow 0.2s;
+     margin-bottom: 1.5%;
+  }
+
+#eventInput input:focus {
+    outline: none;
+    border-color: #007BFF; /* Violet focus */
+    box-shadow: 0 0 4px #007BFF;
+}
+
+#descriptionInput label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#descriptionInput textarea {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 16px;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    background-color: #F9FAFB;
+    color: #111827;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-bottom: 1.5%;
+  }
+
+#descriptionInput textarea:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 4px #007BFF;
+}
+
+#documentInput label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#documentInput input[type="file"] {
+    width: 100%;
+    font-size: 14px;
+    color: #6B7280; /* Gris moyen */
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    background-color: #F9FAFB;
+    padding: 0.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#documentInput input[type="file"]:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 4px #007BFF;
+}
+
+#documentInput p {
+    font-size: 12px;
+    color: #6B7280;
+    margin-top: 0.5rem;
+}
+
+  #submitSendRequestForm {
+    width:300px;
+    height: 40px;
+    margin-top: 1%;
+   
+
+  }
+
+  #submitSendRequestForm button {
+    
+    background-color: #007BFF; /* Bleu classique */
+    color: white; /* Texte en blanc */
+    width: 35%; /* Largeur */
+    height: 100%; /* Hauteur */
+    border: none; /* Suppression des bordures */
+    border-radius: 4px; /* Coins légèrement arrondis */
+    font-size: 16px; /* Taille du texte */
+    font-weight: bold; /* Texte en gras */
+    cursor: pointer; /* Curseur interactif */
+    text-align: center; /* Texte centré */
+    line-height: 100%; /* Alignement vertical du texte */
+}
+
+#submitSendRequestForm button:hover {
+    background-color: #0056b3; /* Bleu plus sombre au survol */
+}
+
+#submitSendRequestForm button:active {
+    background-color: #003d80; /* Bleu encore plus sombre lors du clic */
+}
+
+  
+  
+  
