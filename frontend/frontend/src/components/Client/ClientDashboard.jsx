@@ -3,7 +3,7 @@ import { useUserContext } from "../../context/Context"
 import { LOGIN_ROUTE } from "../../routes"
 import AuthentificationApi from "../../services/Api/AuthentificationApi"
 
-export default function ClientComponent(){
+export default function ClientDashboard(){
     const {logout: contextLogout } = useUserContext()
     const navigate = useNavigate()
     const logout = async () => {

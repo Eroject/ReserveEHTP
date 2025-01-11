@@ -8,11 +8,13 @@ import ClubDashboardLayout from "../layouts/ClubDashboardLayout";
 import AdminCalendrier from "../components/Admin/AdminCalendrier";
 import AdminDashboard from "../components/Admin/AdminDashboard";
 import ClubDashboard from "../components/Club/ClubDashboard";
+import AdminClub from "../components/Admin/AdminClub";
 export const LOGIN_ROUTE ='/';
 export const CLIENT_DASHBOARD_ROUTE ='/client';
 export const ADMIN_DASHBOARD_ROUTE ='/admin';
 export const ADMIN_DASHBOARD_EVENT_ROUTE ='/admin/event';
 export const ADMIN_CALENDRIER_ROUTE ='/admin/calendrier';
+export const ADMIN_CLUB_ROUTE ='/admin/club';
 export const CLUB_DASHBOARD_ROUTE ='/club';
 
 
@@ -58,6 +60,10 @@ export const router = createBrowserRouter([
             {
                 path: ADMIN_CALENDRIER_ROUTE,
                 element: <AdminCalendrier/>
+            }, 
+            {
+                path: ADMIN_CLUB_ROUTE,
+                element: <AdminClub/>
             }
 
         ]

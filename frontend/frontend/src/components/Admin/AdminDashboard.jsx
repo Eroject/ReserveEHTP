@@ -3,8 +3,9 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, InputA
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import SimpleTable from '../SimpleTable';
 import SearchIcon from '@mui/icons-material/Search';
+import DemandeApi from '../../services/ApiPython/DemandeApi';
 
-const rows = [
+/*const rows = [
   {
     id: 1,
     club: 'IT',
@@ -85,7 +86,7 @@ const rows = [
     heureFin: '16:00',
     description: 'Session multijoueur',
   },
-];
+];*/
 /*
 
 const AdminComponent = () => <SimpleTable columns={columns} data={rows} />;
@@ -114,12 +115,41 @@ const [selectedAcceptRequest, setSelectedAcceptRequest] = useState(null); // Pou
     setOpenDialog(false); // Fermer le Dialog
     setSelectedRequest(null); // Réinitialiser la demande sélectionnée
   };
-
+/*
   const handleConfirmerRefus = () => {
     // Logique pour refuser la demande ici
-    console.log('Demande refusée:', selectedRequest);
+    DemandeApi.refuser(selectedRequest.id)
+    if (status === 200) {
+      // Mettez à jour les données de l'interface utilisateur si nécessaire
+      setData(data.filter(d => d.id !== selectedRequest.id));
+
+      console.log('Demande refusée avec succès:');
+    } else {
+      console.error("La demande de refus a échoué");
+    }
     handleCloseDialog(); // Fermer le Dialog après confirmation
+  };*/
+  const handleConfirmerRefus = async () => {
+    try {
+      // Appel à l'API pour refuser la demande
+      const response = await DemandeApi.refuser(selectedRequest.id);
+  
+      if (response.status === 200) {
+        // Mettre à jour les données de l'interface utilisateur
+        setData((prevData) => prevData.filter((d) => d.id !== selectedRequest.id));
+        console.log('Demande refusée avec succès:', response.data);
+      } else {
+        console.error('La demande de refus a échoué :', response.statusText);
+      }
+    } catch (error) {
+      // Gestion des erreurs
+      console.error('Erreur lors du refus de la demande :', error);
+    } finally {
+      // Fermer le Dialog après confirmation
+      handleCloseDialog();
+    }
   };
+  
 
   const handleAccepterClick = (row) => {
     setSelectedAcceptRequest(row); // Définir la demande sélectionnée pour accepter
@@ -140,36 +170,35 @@ const [selectedAcceptRequest, setSelectedAcceptRequest] = useState(null); // Pou
 
   const columns = [
     { id: 'club', label: 'Club' },
-    { id: 'dateReservation', label: 'Date de Réservation' },
-    { id: 'heureDepart', label: 'Heure de Départ' },
-    { id: 'heureFin', label: 'Heure de Fin' },
+    { id: 'date_reservation', label: 'Date de Réservation' },
+    { id: 'heure_depart', label: 'Heure de Départ' },
+    { id: 'heure_fin', label: 'Heure de Fin' },
     { id: 'description', label: 'Description' },
+    { id: 'date_creation', label: 'Date de Création' },
     {
       id: 'options',
       label: 'Options',
       render: (row) => (
-        <>
-          <Stack direction="column" spacing={1}>
-            <Button
-              variant="contained"
-              color="success"
-              size="small"
-              sx={{ fontSize: '0.7rem', padding: '4px 8px' }}
-              onClick={() => handleAccepterClick(row)}  // Ouvrir le Dialog pour accepter
-            >
-              Accepter
-            </Button>
-            <Button
-              variant="contained"
-              color="error"
-              size="small"
-              sx={{ fontSize: '0.7rem', padding: '4px 8px' }}
-              onClick={() => handleRefuserClick(row)}  // Ouvrir le Dialog pour refuser
-            >
-              Refuser
-            </Button>
-          </Stack>
-        </>
+        <Stack direction="column" spacing={1}>
+          <Button
+            variant="contained"
+            color="success"
+            size="small"
+            sx={{ fontSize: '0.7rem', padding: '4px 8px' }}
+            onClick={() => handleAccepterClick(row)}
+          >
+            Accepter
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            size="small"
+            sx={{ fontSize: '0.7rem', padding: '4px 8px' }}
+            onClick={() => handleRefuserClick(row)}
+          >
+            Refuser
+          </Button>
+        </Stack>
       ),
     },
     {
@@ -183,15 +212,19 @@ const [selectedAcceptRequest, setSelectedAcceptRequest] = useState(null); // Pou
     },
   ];
   
-
-
-
-
+  
 
 
 
   useEffect(() => {
-    const filtered = rows.filter((row) => {
+    DemandeApi.getDemande().then(({ data }) => setData(data));
+  }, []);
+  
+
+
+
+  useEffect(() => {
+    const filtered = data.filter((row) => {
       const lowerSearchTerm = searchTerm.toLowerCase();
       return (
         row.club.toLowerCase().includes(lowerSearchTerm) ||
@@ -202,12 +235,9 @@ const [selectedAcceptRequest, setSelectedAcceptRequest] = useState(null); // Pou
       );
     });
     setFilteredData(filtered);
-  }, [searchTerm, rows]);
+  }, [searchTerm, data]);
 
-  /*useEffect(() => {
-    DemandeApi.all().then(({ data }) => setData(data.data));
-  }, []);*/
-
+  
 
   return (
     <div>

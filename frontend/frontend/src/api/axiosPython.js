@@ -2,8 +2,6 @@ import axios from "axios";
 
 const axiosClientPython = axios.create({
     baseURL: import.meta.env.VITE_SERVICE_PYTHON_URL,
-    withCredentials : true,
-    withXSRFToken: true,
 })
 
 

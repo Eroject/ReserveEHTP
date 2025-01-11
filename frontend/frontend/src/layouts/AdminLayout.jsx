@@ -22,7 +22,7 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import { useUserContext } from '../context/Context';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import AuthentificationApi from '../services/Api/AuthentificationApi';
-import { ADMIN_CALENDRIER_ROUTE, ADMIN_DASHBOARD_ROUTE, LOGIN_ROUTE } from '../routes';
+import { ADMIN_CALENDRIER_ROUTE, ADMIN_CLUB_ROUTE, ADMIN_DASHBOARD_ROUTE, LOGIN_ROUTE } from '../routes';
 import HomeIcon from '@mui/icons-material/Home';
 import EventIcon from '@mui/icons-material/Event';
 import PieChartIcon from '@mui/icons-material/PieChart';
@@ -128,7 +128,7 @@ export default function AdminLayout() {
   const menuItems = [
     { text: 'Dashboard', route: ADMIN_DASHBOARD_ROUTE, icon: <HomeIcon /> },
     { text: 'Calendrier', route: ADMIN_CALENDRIER_ROUTE, icon: <EventIcon /> },
-    { text: 'Send email', route: '/admin/send-email', icon: <PieChartIcon /> },
+    { text: 'Club', route: ADMIN_CLUB_ROUTE, icon: <PieChartIcon /> },
     { text: 'Drafts', route: '/admin/drafts', icon: <InboxIcon /> },
     { text: 'Drafts', route: '/admin/drafts', icon: <InboxIcon /> },
   ];

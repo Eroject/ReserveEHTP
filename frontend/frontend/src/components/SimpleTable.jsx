@@ -128,6 +128,7 @@ function SimpleTable({ columns, data }) {
           page={page + 1} // Convert back to 1-indexed for Pagination
           onChange={handleChangePage}
         />
+        
       </Box>
     </Box>
   );
