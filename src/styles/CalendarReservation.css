@@ -1,3 +1,5 @@
+
+
 #calendarRequestBox #calendarRequestBox2 {
   position: fixed;
   top: 0;
@@ -46,4 +48,172 @@
 #calendarRequestBox #calendarRequestBox2 .MuiButton-root:hover {
   background-color: #6f2bd3;
   border-color: #bbb; /* Contour légèrement plus foncé au survol */
+}
+
+
+
+
+
+
+
+
+
+/* Conteneur principal */
+#calendarRequestBox {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+}
+
+/* Bouton principal */
+.calendar-reservation-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white; /* Bleu marine élégant */
+  color: #555;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calendar-reservation-button:hover {
+  background-color: #e6f3ff; /* Bleu marine plus foncé au survol */
+  transform: scale(1.02);
+}
+
+/* Icône triangle */
+#icone-triangle {
+  color: white;
+}
+
+/* Boîte contenant le calendrier */
+#calendarRequestBox2 {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 55px; /* Espacement depuis le bouton */
+  left: 0;
+  z-index: 10;
+  background-color: #ffffff; /* Fond blanc */
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Carte contenant le calendrier */
+#calendarRequestBox2 .MuiCard-root {
+  padding: 15px;
+  background-color: #f9f9f9; /* Fond légèrement gris */
+  border-radius: 8px;
+  border: 1px solid #e0e0e0; /* Bordure discrète */
+}
+
+/* Calendrier React */
+.react-calendar {
+  width: 100%;
+  border: none;
+  font-family: 'Roboto', sans-serif; /* Typographie moderne */
+  font-size: 14px;
+  color: #333;
+}
+
+/* Jours et navigation */
+.react-calendar__navigation button {
+  color: #0056b3; /* Bleu pour la navigation */
+  font-weight: bold;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.react-calendar__navigation button:hover {
+  color: #003d80; /* Couleur plus sombre au survol */
+}
+
+/* Jours de la semaine */
+.react-calendar__month-view__weekdays {
+  font-weight: bold;
+  color: #666; /* Couleur grise discrète */
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+/* Cases du calendrier */
+.react-calendar__tile {
+  background: #ffffff; /* Fond blanc pour les cases */
+  border: 1px solid transparent;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.react-calendar__tile:hover {
+  background: #e6f3ff; /* Bleu clair au survol */
+  border: 1px solid #0056b3; /* Bordure bleu marine au survol */
+}
+
+.react-calendar__tile--active {
+  background: #0056b3; /* Fond bleu marine pour la date sélectionnée */
+  color: white;
+  font-weight: bold;
+}
+
+.react-calendar__tile--now {
+  background: #f0f8ff; /* Fond bleu très clair pour aujourd'hui */
+  font-weight: bold;
+  color: #0056b3;
+}
+
+.react-calendar__tile--now:hover {
+  background: #d6eaff; /* Bleu plus foncé au survol */
+}
+
+/* Lignes entre les semaines */
+.react-calendar__month-view__days {
+  border-top: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+}
+
+.react-calendar__month-view__days__day {
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Boutons de navigation */
+.react-calendar__navigation__label,
+.react-calendar__navigation__arrow {
+  font-size: 16px;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.react-calendar__navigation__label:hover,
+.react-calendar__navigation__arrow:hover {
+  color: #0056b3; /* Bleu au survol */
 }

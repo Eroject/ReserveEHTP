@@ -4,9 +4,9 @@ import { Box, Button, Card } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';  
 import "./../styles/CalendarReservation.css";
 
-export default function CalendarReservation ({onSelectDate}) {
+export default function CalendarReservation ({onSelectDate,value}) {
   const [isCardOpen, setIsCardOpen] = useState(false); // Contrôle l'affichage de la carte
-  const [selectedDate, setSelectedDate] = useState(null); // État pour la date sélectionnée
+  //const [selectedDate, setSelectedDate] = useState(null); // État pour la date sélectionnée
   const cardRef = useRef(null);
 
   // Fonction pour ouvrir ou fermer la carte
@@ -16,11 +16,12 @@ export default function CalendarReservation ({onSelectDate}) {
 
   // Fonction de gestion de la sélection de la date
   const handleDateChange = (date) => {
-    setSelectedDate(date); // Mettre à jour la date sélectionnée
-    setIsCardOpen(false); // Fermer la carte après la sélection
+    //setSelectedDate(date); // Mettre à jour la date sélectionnée
+    
     if(onSelectDate){
       onSelectDate(date);
     }
+    setIsCardOpen(false); // Fermer la carte après la sélection
   };
 
   //gestion du clic en dehors de la carte du calendrier
@@ -49,7 +50,7 @@ export default function CalendarReservation ({onSelectDate}) {
     <Box id="calendarRequestBox">
       {/* Bouton avec icône de triangle */}
       <Button onClick={handleClick} variant="outlined"  className="calendar-reservation-button">
-      <span>{selectedDate ? selectedDate.toLocaleDateString('fr-FR') : "Date"}</span>
+      <span>{value ? value.toLocaleDateString('fr-FR') : "Date"}</span>
      <ExpandMore sx={{ marginLeft: '8px' }} id="icone-triangle"/>
       </Button>
 
@@ -61,7 +62,7 @@ export default function CalendarReservation ({onSelectDate}) {
             <Calendar
            
               onChange={handleDateChange}
-              value={selectedDate}
+              value={value}
             />
           </Card>
         </Box>

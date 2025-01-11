@@ -8,9 +8,9 @@ import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import "./../styles/TimeReservation.css";
 
-export default function TimeReservation({ type, onSelectTime }) {
+export default function TimeReservation({ type, onSelectTime , value}) {
   const [isCardOpen, setIsCardOpen] = useState(true);
-  const [selectedTime, setSelectedTime] = useState(null);
+  //const [selectedTime, setSelectedTime] = useState(null);
   //const cardRef = useRef(null);
   //const timePickerRef = useRef(null); // Ajout d'un ref pour le TimePicker
 
@@ -21,7 +21,7 @@ export default function TimeReservation({ type, onSelectTime }) {
 
   // Gérer le changement d'heure sélectionnée
   const handleTimeChange = (time) => {
-    setSelectedTime(time);
+    //setSelectedTime(time);
     if (onSelectTime) {
       onSelectTime(time);
     }
@@ -71,7 +71,7 @@ export default function TimeReservation({ type, onSelectTime }) {
             <TimePicker
              
               label={type === 'start' ? 'heure de début' : 'heure de fin'}
-              value={selectedTime}
+              value={value}
               onChange={handleTimeChange}
               renderInput={(params) => <TextField {...params} />}
             />

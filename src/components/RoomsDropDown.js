@@ -4,9 +4,9 @@ import { ExpandMore } from '@mui/icons-material';
 import "./../styles/RoomsDropDown.css";
 
 
-export default function RoomsDropDown({onSelect}) {
+export default function RoomsDropDown({onSelect,value}) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedOption, setSelectedOption] = useState('salle');
+  //const [selectedOption, setSelectedOption] = useState('salle');
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -15,19 +15,23 @@ export default function RoomsDropDown({onSelect}) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
+ 
 
   const handleSelectOption = (option) => {
-    setSelectedOption(option);
-    setAnchorEl(null); // Close the menu after selection
+    //setSelectedOption(option);
+    
     if (onSelect) {
       onSelect(option); // Appeler la fonction passée par le parent
     }
+    setAnchorEl(null); // Close the menu after selection
+    
   };
 
   return (
     <div id="roomsDropDown">
       <Button onClick={handleClick} >
-        <span>{selectedOption}</span>
+        <span>{/*selectedOption*/}{value || "salle"}</span>
         <ExpandMore sx={{ marginLeft: '8px' }} id="icone-triangle"/>
         </Button>
       <Menu

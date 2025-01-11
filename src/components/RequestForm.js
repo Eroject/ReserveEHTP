@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm , reset} from "react-hook-form";
 import RoomsDropDown from "./RoomsDropDown";
 import CalendarReservation from "./CalendarReservation";
 import TimeReservation from "./TimeReservation";
@@ -12,14 +12,16 @@ export default function RequestForm() {
     idClub: "1",
     salle: "",
     date:null,
-    heureDebut: "",
-    heureFin: "",
+    heureDebut: null,
+    heureFin: null,
     evenement: "",
     description: "",
     fichier: null, // Inclut le fichier
   });
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   // Gestion de la soumission
   const onSubmit = () => {
@@ -43,6 +45,23 @@ export default function RequestForm() {
       .then((res) => res.json())
       .then((data) => console.log("Succès :", data))
       .catch((err) => console.error("Erreur :", err));
+    
+
+      setFormData({
+        idClub: "1",
+        salle: "",
+        date:null,
+        heureDebut: null,
+        heureFin: null,
+        evenement: "",
+        description: "",
+        fichier: null, // Inclut le fichier
+      });
+
+    
+      
+    
+      
   };
 
   // Gestion des changements de fichier
@@ -61,20 +80,24 @@ export default function RequestForm() {
       <div className="form-input-group">
       <div className="form-row" id="information">
       <RoomsDropDown
-        onSelect={(room) => handleChange("salle", room)}
+      value={formData.salle} 
+        onSelect={(room) => handleChange("salle", room)} 
       />
 
       {/* Sélection de la date */}
       <CalendarReservation
+      value={formData.date}
         onSelectDate={(date) => handleChange("date", date)}
       />
 
       {/* Sélection de l'heure */}
       <TimeReservation
+      value={formData.heureDebut}
         type="start"
         onSelectTime={(time) => handleChange("heureDebut", time)}
       />
       <TimeReservation
+      value={formData.heureFin}
         type="end"
         onSelectTime={(time) => handleChange("heureFin", time)}
       />
@@ -122,7 +145,7 @@ export default function RequestForm() {
           onChange={handleFileChange}
           className="mt-1 block w-full text-sm text-gray-500 border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500"
         />
-        {formData.fichier && <p className="text-sm text-gray-600">Fichier sélectionné: {formData.fichier.name}</p>}
+        {/*{formData.fichier && <p className="text-sm text-gray-600">Fichier sélectionné: {formData.fichier.name}</p>}*/}
       </div>
 
       {/* Bouton d'envoi */}
