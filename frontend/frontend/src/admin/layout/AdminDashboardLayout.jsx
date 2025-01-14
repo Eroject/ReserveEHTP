@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Outlet, useNavigate} from "react-router-dom";
-import { useUserContext } from "../context/Context";
-import AuthentificationApi from "../services/Api/AuthentificationApi";
-import { LOGIN_ROUTE, redirectToDashboard } from "../routes";
-import ClientLayout from "./ClientLayout";
-export default function ClientDashboardLayout(){
+import { useNavigate} from "react-router-dom";
+import { LOGIN_ROUTE, redirectToDashboard } from "../../routes";
+import AdminLayout from "./AdminLayout";
+import { useUserContext } from "../../context/Context";
+import AuthentificationApi from "../../service-authentification/AuthentificationApi";
+export default function AdminDashboardLayout(){
     const navigate = useNavigate()
     const [isLoading , setIsLoading] = useState(true)
     const { authenticated , setUser , setAuthenticated ,  logout: contextLogout} = useUserContext()
@@ -12,12 +12,12 @@ export default function ClientDashboardLayout(){
         if(authenticated === true){
             setIsLoading(false)
             AuthentificationApi.getUser().then( ({data}) => {
-                
-                setUser(data)
-                setAuthenticated(true)
-                if(data.role !== 'client'){
+                if(data.role !== 'admin'){
                     navigate(redirectToDashboard(data.role))
                 }
+                setUser(data)
+                setAuthenticated(true)
+               
             }).catch((reason) => {//reason
                 contextLogout()
             })
@@ -27,9 +27,24 @@ export default function ClientDashboardLayout(){
 
     }, [authenticated]);
     if(isLoading){
-        return <></>
+        return <>
+        </>
     }
     return <>
-        <ClientLayout />
+        <AdminLayout/>
     </>
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useUserContext } from "../../context/Context"
-import AuthentificationApi from "../../services/Api/AuthentificationApi"
+import AuthentificationApi from "../../service-authentification/AuthentificationApi"
 import { LOGIN_ROUTE } from "../../routes"
 
 export default function ClubDashboard(){

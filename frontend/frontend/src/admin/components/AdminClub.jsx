@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Tab, Tabs, Box, Typography, Stack, Button, InputAdornment, TextField } from "@mui/material";
-import SimpleTable from "../SimpleTable";
+import SimpleTable from "../../components-commun-between-us/SimpleTable";
 import SearchIcon from '@mui/icons-material/Search';
 import AdminAddClub from "./AdminAddClub";
 

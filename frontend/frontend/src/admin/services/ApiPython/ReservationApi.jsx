@@ -1,4 +1,4 @@
-import { axiosClientPython } from "../../api/axiosPython"
+import { axiosClientPython } from "../../../api/axiosPython"
 
 
 const ReservationApi = {

@@ -2,7 +2,7 @@ import { Outlet, useNavigate} from "react-router-dom";
 import { useUserContext } from "../context/Context";
 import { useEffect } from "react";
 import {  redirectToDashboard } from "../routes";
-import AuthentificationApi from "../services/Api/AuthentificationApi";
+import AuthentificationApi from "../service-authentification/AuthentificationApi";
 export default function VisiteurLayout(){
     const navigate = useNavigate()
     const context = useUserContext()

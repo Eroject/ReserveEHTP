@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useUserContext } from "../../context/Context"
+import AuthentificationApi from "../../service-authentification/AuthentificationApi"
 import { LOGIN_ROUTE } from "../../routes"
-import AuthentificationApi from "../../services/Api/AuthentificationApi"
 
 export default function ClientDashboard(){
     const {logout: contextLogout } = useUserContext()

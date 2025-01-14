@@ -18,9 +18,9 @@ import { styled } from '@mui/material/styles';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useUserContext } from "../../context/Context"
-import { redirectToDashboard } from "../../routes"
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../context/Context';
+import { redirectToDashboard } from '../routes';
 const formSchema = z.object({
   email: z.string().email().min(2).max(50),
   password: z.string().min(8).max(30),

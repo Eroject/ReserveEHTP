@@ -1,92 +1,38 @@
 import { useEffect, useState } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, InputAdornment, Stack, TextField } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, InputAdornment, Stack, TextField, Tooltip } from '@mui/material';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
-import SimpleTable from '../SimpleTable';
 import SearchIcon from '@mui/icons-material/Search';
-import DemandeApi from '../../services/ApiPython/DemandeApi';
-
-/*const rows = [
+import SimpleTable from '../../components-commun-between-us/SimpleTable';
+import DemandeApi from '../services/ApiPython/DemandeApi';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
+const rows = [
   {
     id: 1,
     club: 'IT',
-    dateReservation: '19 Mai 2021, 10:20 AM',
-    heureDepart: '10:20',
-    heureFin: '12:00',
+    date_reservation: '19 Mai 2021, 10:20 AM',
+    heure_depart: '10:20',
+    heure_fin: '12:00',
     description: 'Exemple',
   },
   {
     id: 2,
     club: 'Sports',
-    dateReservation: '20 Mai 2021, 2:00 PM',
-    heureDepart: '14:00',
-    heureFin: '15:30',
+    date_reservation: '20 Mai 2021, 2:00 PM',
+    heure_depart: '14:00',
+    heure_fin: '15:30',
     description: 'Réunion',
   },
   {
     id: 3,
     club: 'Music',
-    dateReservation: '21 Mai 2021, 3:00 PM',
-    heureDepart: '15:00',
-    heureFin: '16:30',
+    date_reservation: '21 Mai 2021, 3:00 PM',
+    heuree_dpart: '15:00',
+    heure_fin: '16:30',
     description: 'Concert',
   },
-  {
-    id: 4,
-    club: 'Photography',
-    dateReservation: '18 Juin 2021, 3:30 PM',
-    heureDepart: '15:30',
-    heureFin: '17:00',
-    description: 'Séance photo de groupe',
-  },
-  {
-    id: 5,
-    club: 'Science',
-    dateReservation: '19 Juin 2021, 10:00 AM',
-    heureDepart: '10:00',
-    heureFin: '11:30',
-    description: 'Conférence sur l’espace',
-  },
-  {
-    id: 6,
-    club: 'Dance',
-    dateReservation: '20 Juin 2021, 5:00 PM',
-    heureDepart: '17:00',
-    heureFin: '18:30',
-    description: 'Préparation pour le spectacle annuel',
-  },
-  {
-    id: 7,
-    club: 'Chess',
-    dateReservation: '21 Juin 2021, 4:00 PM',
-    heureDepart: '16:00',
-    heureFin: '17:30',
-    description: 'Tournoi interne de jeu d’échecs',
-  },
-  {
-    id: 8,
-    club: 'Environment',
-    dateReservation: '22 Juin 2021, 8:30 AM',
-    heureDepart: '08:30',
-    heureFin: '10:00',
-    description: 'Nettoyage et plantation d’arbres',
-  },
-  {
-    id: 9,
-    club: 'Drama',
-    dateReservation: '23 Juin 2021, 6:00 PM',
-    heureDepart: '18:00',
-    heureFin: '19:30',
-    description: 'Répétition de la pièce de théâtre',
-  },
-  {
-    id: 10,
-    club: 'Gaming',
-    dateReservation: '24 Juin 2021, 2:30 PM',
-    heureDepart: '14:30',
-    heureFin: '16:00',
-    description: 'Session multijoueur',
-  },
-];*/
+  
+];
 /*
 
 const AdminComponent = () => <SimpleTable columns={columns} data={rows} />;
@@ -178,27 +124,44 @@ const [selectedAcceptRequest, setSelectedAcceptRequest] = useState(null); // Pou
     {
       id: 'options',
       label: 'Options',
-      render: (row) => (
+      render: (row) => (/*
         <Stack direction="column" spacing={1}>
-          <Button
-            variant="contained"
-            color="success"
-            size="small"
-            sx={{ fontSize: '0.7rem', padding: '4px 8px' }}
-            onClick={() => handleAccepterClick(row)}
-          >
-            Accepter
-          </Button>
-          <Button
-            variant="contained"
-            color="error"
-            size="small"
-            sx={{ fontSize: '0.7rem', padding: '4px 8px' }}
-            onClick={() => handleRefuserClick(row)}
-          >
-            Refuser
-          </Button>
-        </Stack>
+          <IconButton
+  color="success"
+  size="small"
+  onClick={() => handleAccepterClick(row)}
+>
+  <CheckIcon  />
+</IconButton>
+<IconButton
+  color="error"
+  size="small"
+  onClick={() => handleRefuserClick(row)}
+>
+  <CloseIcon  />
+</IconButton>
+        </Stack>*/
+        <Stack direction="row" spacing={1} alignItems="center">
+  <Tooltip title="Accepter" arrow>
+    <IconButton
+      color="success"
+      size="medium"
+      onClick={() => handleAccepterClick(row)}
+    >
+      <CheckIcon style={{ fontSize: '2rem' }} />
+    </IconButton>
+  </Tooltip>
+  <Tooltip title="Refuser" arrow>
+    <IconButton
+      color="error"
+      size="medium"
+      onClick={() => handleRefuserClick(row)}
+    >
+      <CloseIcon style={{ fontSize: '2rem' }} />
+    </IconButton>
+  </Tooltip>
+</Stack>
+
       ),
     },
     {
@@ -214,17 +177,17 @@ const [selectedAcceptRequest, setSelectedAcceptRequest] = useState(null); // Pou
   
   
 
-
+/*
 
   useEffect(() => {
     DemandeApi.getDemande().then(({ data }) => setData(data));
   }, []);
   
-
+*/
 
 
   useEffect(() => {
-    const filtered = data.filter((row) => {
+    const filtered = rows.filter((row) => {
       const lowerSearchTerm = searchTerm.toLowerCase();
       return (
         row.club.toLowerCase().includes(lowerSearchTerm) ||
@@ -235,7 +198,7 @@ const [selectedAcceptRequest, setSelectedAcceptRequest] = useState(null); // Pou
       );
     });
     setFilteredData(filtered);
-  }, [searchTerm, data]);
+  }, [searchTerm, rows]);
 
   
 

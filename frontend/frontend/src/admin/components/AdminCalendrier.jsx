@@ -19,7 +19,6 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import "dayjs/locale/fr";
-import ReservationApi from "../../services/ApiPython/ReservationApi";
 
 dayjs.locale("fr");
 

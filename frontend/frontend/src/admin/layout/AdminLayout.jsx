@@ -19,13 +19,14 @@ import MailIcon from '@mui/icons-material/Mail';
 import CloseIcon from '@mui/icons-material/Close';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import { useUserContext } from '../context/Context';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import AuthentificationApi from '../services/Api/AuthentificationApi';
-import { ADMIN_CALENDRIER_ROUTE, ADMIN_DASHBOARD_ROUTE, LOGIN_ROUTE } from '../routes';
 import HomeIcon from '@mui/icons-material/Home';
 import EventIcon from '@mui/icons-material/Event';
 import PieChartIcon from '@mui/icons-material/PieChart';
+import { useUserContext } from '../../context/Context';
+import { ADMIN_CALENDRIER_ROUTE, ADMIN_CLUB_ROUTE, ADMIN_DASHBOARD_ROUTE, LOGIN_ROUTE } from '../../routes';
+import AuthentificationApi from '../../service-authentification/AuthentificationApi';
+import { Tooltip } from '@mui/material';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -107,8 +108,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   });
 
   
-export default function ClientLayout() {
-    const {logout: contextLogout , user} = useUserContext()
+export default function AdminLayout() {
+    const {logout: contextLogout } = useUserContext()
     const navigate = useNavigate()
     const logout = async () => {
         AuthentificationApi.logout().then( () => {
@@ -126,9 +127,9 @@ export default function ClientLayout() {
     setOpen(false);
   };
   const menuItems = [
-    { text: 'Dashboard', route: "/client", icon: <HomeIcon /> },
-    { text: 'Calendrier', route: "/client", icon: <EventIcon /> },
-    { text: 'Send email', route: '/admin/send-email', icon: <PieChartIcon /> },
+    { text: 'Dashboard', route: ADMIN_DASHBOARD_ROUTE, icon: <HomeIcon /> },
+    { text: 'Calendrier', route: ADMIN_CALENDRIER_ROUTE, icon: <EventIcon /> },
+    { text: 'Club', route: ADMIN_CLUB_ROUTE, icon: <PieChartIcon /> },
     { text: 'Drafts', route: '/admin/drafts', icon: <InboxIcon /> },
     { text: 'Drafts', route: '/admin/drafts', icon: <InboxIcon /> },
   ];
@@ -179,7 +180,7 @@ export default function ClientLayout() {
       component="div"
       sx={{ color: '#444444' }} // Ajout de la couleur
     >
-      Welcome {user.firstname} {user.lastname}
+      Welcome Administrateur
     </Typography>
     )}
     <Box sx={{ flexGrow: 1 }} /> {/* Espace entre le texte et les icônes */}
@@ -210,52 +211,54 @@ export default function ClientLayout() {
 
         {menuItems.map((item) => (
   <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-    <ListItemButton
-      component={Link} // Utilisation de Link pour le bouton
-      to={item.route} // Route dynamique
-      sx={[
-        {
-          minHeight: 48,
-          px: 2.5,
-        },
-        open
-          ? {
-              justifyContent: 'initial',
-            }
-          : {
-              justifyContent: 'center',
-            },
-      ]}
-    >
-      <ListItemIcon
-        sx={{
-          ...iconStyle(open), // Style conditionnel
-          minWidth: 0,
-          justifyContent: 'center',
-          alignItems: 'center', // Centrage vertical
-          display: 'flex', // Ajout pour flexibilité
-        }}
-      >
-        {item.icon} {/* Icône dynamique */}
-      </ListItemIcon>
-      <ListItemText
-        primary={item.text} // Texte dynamique
+    <Tooltip title={item.text} placement="right" arrow disableHoverListener={open}>
+      <ListItemButton
+        component={Link} // Utilisation de Link pour le bouton
+        to={item.route} // Route dynamique
         sx={[
           {
-            margin: 0, // Supprime les marges
-            lineHeight: '48px', // Alignement vertical avec l'icône
+            minHeight: 48,
+            px: 2.5,
           },
           open
             ? {
-                opacity: 1,
-                paddingLeft: '16px', // Ajoute un espace entre l'icône et le texte
+                justifyContent: 'initial',
               }
             : {
-                opacity: 0,
+                justifyContent: 'center',
               },
         ]}
-      />
-    </ListItemButton>
+      >
+        <ListItemIcon
+          sx={{
+            ...iconStyle(open), // Style conditionnel
+            minWidth: 0,
+            justifyContent: 'center',
+            alignItems: 'center', // Centrage vertical
+            display: 'flex', // Ajout pour flexibilité
+          }}
+        >
+          {item.icon} {/* Icône dynamique */}
+        </ListItemIcon>
+        <ListItemText
+          primary={item.text} // Texte dynamique
+          sx={[
+            {
+              margin: 0, // Supprime les marges
+              lineHeight: '48px', // Alignement vertical avec l'icône
+            },
+            open
+              ? {
+                  opacity: 1,
+                  paddingLeft: '16px', // Ajoute un espace entre l'icône et le texte
+                }
+              : {
+                  opacity: 0,
+                },
+          ]}
+        />
+      </ListItemButton>
+    </Tooltip>
   </ListItem>
 ))}
 
