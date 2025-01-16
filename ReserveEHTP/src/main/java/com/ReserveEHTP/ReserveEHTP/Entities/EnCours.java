@@ -19,6 +19,22 @@ public class EnCours  implements EtatDemande {
         // Implémentation spécifique pour la demande en cours
         // Par exemple : Vérification de la disponibilité de la salle, etc.
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Demande> getDemandes() {
+        return demandes;
+    }
+
+    public void setDemandes(List<Demande> demandes) {
+        this.demandes = demandes;
+    }
 }
 
 

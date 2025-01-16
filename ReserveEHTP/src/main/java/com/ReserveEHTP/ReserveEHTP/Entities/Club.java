@@ -1,33 +1,32 @@
 package com.ReserveEHTP.ReserveEHTP.Entities;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+
+import jakarta.persistence.Entity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+
 @Entity
-@Getter
-@Setter
 public class Club extends Demandeur {
 
     private String nomClub;
 
     @Override
     public List<Salle> afficherLocalDisponible() {
-        // Implémentation spécifique pour les clubs
+
         return null;
     }
 
-   /* public void setNomClub(String nomClub) {
-        this.nomClub = nomClub;
+    @Override
+    public void login(String email, String motDePasse) {
     }
 
     public String getNomClub() {
         return nomClub;
     }
-*/
-    @Override
-    public void login(String email, String motDePasse) {
 
+    public void setNomClub(String nomClub) {
+        this.nomClub = nomClub;
     }
 }

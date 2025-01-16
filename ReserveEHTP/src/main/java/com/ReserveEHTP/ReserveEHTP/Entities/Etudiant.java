@@ -17,4 +17,12 @@ public class Etudiant extends Demandeur {
     public void login(String email, String motDePasse) {
 
     }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
 }

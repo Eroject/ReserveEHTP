@@ -23,4 +23,36 @@ public class Rejetee implements EtatDemande {
         // Implémentation spécifique pour la demande rejetée
         // Par exemple : Enregistrement du motif de rejet, notification, etc.
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMotifRejet() {
+        return motifRejet;
+    }
+
+    public void setMotifRejet(String motifRejet) {
+        this.motifRejet = motifRejet;
+    }
+
+    public Date getDateRejet() {
+        return dateRejet;
+    }
+
+    public void setDateRejet(Date dateRejet) {
+        this.dateRejet = dateRejet;
+    }
+
+    public List<Demande> getDemandes() {
+        return demandes;
+    }
+
+    public void setDemandes(List<Demande> demandes) {
+        this.demandes = demandes;
+    }
 }

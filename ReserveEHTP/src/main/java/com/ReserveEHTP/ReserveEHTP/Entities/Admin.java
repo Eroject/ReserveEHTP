@@ -20,5 +20,11 @@ public class Admin extends Utilisateur {
 
     }
 
-    // Autres méthodes spécifiques à Admin
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
 }

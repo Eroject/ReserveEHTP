@@ -21,4 +21,28 @@ public class Reservee implements EtatDemande {
         // Implémentation spécifique pour la demande réservée
         // Par exemple : Mise à jour de l'état de la demande, notification, etc.
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getDuree() {
+        return duree;
+    }
+
+    public void setDuree(int duree) {
+        this.duree = duree;
+    }
+
+    public List<Demande> getDemandes() {
+        return demandes;
+    }
+
+    public void setDemandes(List<Demande> demandes) {
+        this.demandes = demandes;
+    }
 }
