@@ -27,6 +27,50 @@ public class Salle implements Local { // Salle hérite de Local
     @OneToMany(mappedBy = "salle", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Demande> demandes; // Un Local peut avoir plusieurs Demandes
 
+    public Boolean getDisponible() {
+        return disponible;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDepartement() {
+        return departement;
+    }
+
+    public void setDepartement(String departement) {
+        this.departement = departement;
+    }
+
+    public int getNombrePlaces() {
+        return nombrePlaces;
+    }
+
+    public void setNombrePlaces(int nombrePlaces) {
+        this.nombrePlaces = nombrePlaces;
+    }
+
+    public List<String> getEquipements() {
+        return equipements;
+    }
+
+    public void setEquipements(List<String> equipements) {
+        this.equipements = equipements;
+    }
+
+    public List<Demande> getDemandes() {
+        return demandes;
+    }
+
+    public void setDemandes(List<Demande> demandes) {
+        this.demandes = demandes;
+    }
+
     @Override
     public void selectionnerLocal() {
 

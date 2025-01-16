@@ -2,8 +2,10 @@ package com.ReserveEHTP.ReserveEHTP.Entities;
 
 import java.util.Date;
 import jakarta.persistence.*;
+import lombok.Data;
 
 // Entité Demande
+@Data
 @Entity
 public class Demande {
 
@@ -41,5 +43,9 @@ public class Demande {
     public void traiter() {
         // Implémentation du traitement
     }
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
 }
 
