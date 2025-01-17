@@ -2,12 +2,32 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 50px;
-  border: 1px solid #ccc; /* Contour en gris */
+  height: 3.5rem;
+  border: 1px solid #ccc; /* Contour en gris initial */
   border-radius: 4px; /* Arrondi des bords */
-  padding: 8px;
   margin-top: 1%;
+  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.3);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Animation fluide */
+}
+
+#roomsDropDown:hover {
+  transform: scale(1.05); /* Agrandit légèrement l'élément */
+  border-color: #007bff; /* Change la couleur du contour en bleu classique */
   
+}
+
+#roomsDropDown #button:hover{
+background-color: transparent;
+}
+#roomsDropDown  #salleSelectionnee{
+  width:70%;
+  margin-left: 2%;
+  margin-top: 9%;
+  overflow: hidden; /* cacher le contenu dépassant */
+  white-space: nowrap; /* empêcher le texte de s'étendre sur plusieurs lignes */
+  text-overflow: ellipsis; /* ajouter "..." pour indiquer que le texte est tronqué */
+  
+
 }
 
 #roomsDropDown span{
@@ -36,6 +56,7 @@
   background-color: #f0f0f0;
 }
 
-#icone-triangle {
+#roomsDropDown #icone-triangle {
   color: #555;
+  margin-top: 9%;
 }

@@ -21,6 +21,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Outlet } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import { Link } from 'react-router-dom';
 // import { useUserContext } from '../context/Context';
 // import { Link, Outlet /* , useNavigate */ } from 'react-router-dom';
 // import AuthentificationApi from '../services/Api/AuthentificationApi';
@@ -192,7 +193,7 @@ export default function ClubDashboard() {
         <List>
           {menuItems.map((item) => (
             <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton sx={[{ minHeight: 48, px: 2.5 }, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}>
+              <ListItemButton component={Link} to={item.route} sx={[{ minHeight: 48, px: 2.5 }, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}>
                 <ListItemIcon
                   sx={{
                     ...iconStyle(open),

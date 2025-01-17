@@ -1,4 +1,35 @@
 
+.calendar-reservation-button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #555;
+  
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.3);
+  
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease, border-color 0.3s ease; /* Transition fluide */
+}
+
+.calendar-reservation-button:hover {
+  transform: scale(1.05); /* Agrandissement de l'élément */
+  background-color: white; /* Fond blanc au survol */
+  border-color: #007bff; /* Changement de la couleur de la bordure en bleu */
+  
+}
+
+.calendar-reservation-button span{
+  color:#374151;
+}
+
+
+
 
 #calendarRequestBox #calendarRequestBox2 {
   position: fixed;
@@ -12,6 +43,7 @@
   align-items: center;
   z-index: 9999;
   padding: 20px;
+  
 }
 
 #calendarRequestBox #calendarRequestBox2 .MuiCard-root {
@@ -47,7 +79,7 @@
 
 #calendarRequestBox #calendarRequestBox2 .MuiButton-root:hover {
   background-color: #6f2bd3;
-  border-color: #bbb; /* Contour légèrement plus foncé au survol */
+  border-color: #ccc; /* Contour légèrement plus foncé au survol */
 }
 
 
@@ -63,41 +95,45 @@
   position: relative;
   display: inline-block;
   margin: 20px;
+  height: 55px;
+  margin-top: 3%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 /* Bouton principal */
 .calendar-reservation-button {
+  width:100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white; /* Bleu marine élégant */
+  background-color: white;
   color: #555;
   border-radius: 8px;
   padding: 10px 15px;
   font-size: 14px;
   font-weight: 600;
-  text-transform: uppercase;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: none;
+  
+  
+  
   cursor: pointer;
-  transition: all 0.3s ease;
+  
 }
 
-.calendar-reservation-button:hover {
-  background-color: #e6f3ff; /* Bleu marine plus foncé au survol */
-  transform: scale(1.02);
-}
+
 
 /* Icône triangle */
 #icone-triangle {
   color: white;
+
 }
 
 /* Boîte contenant le calendrier */
 #calendarRequestBox2 {
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   top: 55px; /* Espacement depuis le bouton */
   left: 0;
   z-index: 10;
@@ -108,24 +144,15 @@
   animation: fadeIn 0.3s ease;
 }
 
-/* Animation d'apparition */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+
 
 /* Carte contenant le calendrier */
 #calendarRequestBox2 .MuiCard-root {
   padding: 15px;
   background-color: #f9f9f9; /* Fond légèrement gris */
   border-radius: 8px;
-  border: 1px solid #e0e0e0; /* Bordure discrète */
+  /*border: 1px solid #e0e0e0;  Bordure discrète */
+  border: 1px solid #ccc;
 }
 
 /* Calendrier React */
@@ -175,7 +202,7 @@
 
 .react-calendar__tile:hover {
   background: #e6f3ff; /* Bleu clair au survol */
-  border: 1px solid #0056b3; /* Bordure bleu marine au survol */
+  border: 1px solid #ccc; /* Bordure bleu marine au survol */
 }
 
 .react-calendar__tile--active {
@@ -216,4 +243,9 @@
 .react-calendar__navigation__label:hover,
 .react-calendar__navigation__arrow:hover {
   color: #0056b3; /* Bleu au survol */
+}
+
+#icone-triangle {
+  color: #555;
+  
 }

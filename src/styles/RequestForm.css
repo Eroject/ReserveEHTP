@@ -2,7 +2,7 @@
   display: flex; /* Active le layout flexbox */
   align-items: center; /* Aligne les éléments verticalement au centre */
   justify-content: space-between; /* Espacement uniforme entre les éléments */
-  gap: 1rem; /* Espacement horizontal entre les éléments */
+  gap: 0.2rem; /* Espacement horizontal entre les éléments */
   margin-bottom: 0.7%; /* Espacement sous le conteneur */
 }
 
@@ -43,7 +43,7 @@
     font-weight: 600;
     color: #374151;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
 #eventInput input {
@@ -55,7 +55,8 @@
     background-color: #F9FAFB;
     color: #111827;
     transition: border-color 0.2s, box-shadow 0.2s;
-     margin-bottom: 1.5%;
+     margin-bottom: 1.2%;
+     box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.3);
   }
 
 #eventInput input:focus {
@@ -69,7 +70,7 @@
     font-weight: 600;
     color: #374151;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
 #descriptionInput textarea {
@@ -81,7 +82,8 @@
     background-color: #F9FAFB;
     color: #111827;
     transition: border-color 0.2s, box-shadow 0.2s;
-    margin-bottom: 1.5%;
+    margin-bottom: 1.2%;
+    box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.3);
   }
 
 #descriptionInput textarea:focus {
@@ -95,7 +97,7 @@
     font-weight: 600;
     color: #374151;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
 #documentInput input[type="file"] {
@@ -107,6 +109,7 @@
     background-color: #F9FAFB;
     padding: 0.5rem;
     transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.3);
 }
 
 #documentInput input[type="file"]:focus {
@@ -115,11 +118,7 @@
     box-shadow: 0 0 4px #007BFF;
 }
 
-#documentInput p {
-    font-size: 12px;
-    color: #6B7280;
-    margin-top: 0.5rem;
-}
+
 
   #submitSendRequestForm {
     width:300px;
@@ -142,6 +141,7 @@
     cursor: pointer; /* Curseur interactif */
     text-align: center; /* Texte centré */
     line-height: 100%; /* Alignement vertical du texte */
+    box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.3);
 }
 
 #submitSendRequestForm button:hover {
@@ -150,6 +150,14 @@
 
 #submitSendRequestForm button:active {
     background-color: #003d80; /* Bleu encore plus sombre lors du clic */
+    
+}
+
+#etoileObligation{
+  width:1%;
+  font-size: 20px;
+  margin-left: 0%;
+  color:red;
 }
 
   

@@ -3,11 +3,25 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease, border-color 0.3s ease; /* Transition fluide */
+  
 }
+#timeReservation:hover{
+  transform: scale(1.05);
+}
+
+
 
 #timeReservation .MuiTextField-root {
   margin-top: 10px;
   width: 100%;
+  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.3);
+  
+}
+#timeReservation .MuiTextField-root :hover {
+   /* Agrandissement de l'élément */
+  background-color: white; /* Fond blanc au survol */
+  border-color: #007bff; /* Changement de la couleur de la bordure en bleu */
 }
 
 #timeReservation .MuiCard-root {
@@ -18,4 +32,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
+ 
 }

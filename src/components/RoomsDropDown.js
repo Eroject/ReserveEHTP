@@ -30,15 +30,19 @@ export default function RoomsDropDown({onSelect,value}) {
 
   return (
     <div id="roomsDropDown">
-      <Button onClick={handleClick} >
+      <Button onClick={handleClick}  id="button" >
+      <div id="salleSelectionnee">
         <span>{/*selectedOption*/}{value || "salle"}</span>
-        <ExpandMore sx={{ marginLeft: '8px' }} id="icone-triangle"/>
+        </div>
+        <ExpandMore sx={{ marginLeft: '8px'}} id="icone-triangle"/>
+        
         </Button>
       <Menu
         className='menu'
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        
       >
         <MenuItem className="menu-item" onClick={() => handleSelectOption('salle de conférence')}>salle de conférences</MenuItem>
         <MenuItem className="menu-item" onClick={() => handleSelectOption('Amphi 1')}>Amphi 1</MenuItem>

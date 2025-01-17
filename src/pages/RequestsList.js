@@ -56,16 +56,17 @@ export default function RequestsList(){
       <tbody>
         {/* Parcourir les données pour les afficher */}
         {listeDemandes.map((item) => (
-          {/*<td>{item.evenement}</td>
-          <td>{item.salle}</td>
-          <td>{item.date}</td>
-          <td>{item.heureDebut}</td>
-          <td>{item.heureFin}</td>
-          <td>{item.etat}</td>
-          <td>icone de suppression</td>
-          */}
+  <tr key={item.id}>  {/* It's a good idea to add a unique key for each row */}
+    <td>{item.evenement}</td>
+    <td>{item.salle}</td>
+    <td>{item.date}</td>
+    <td>{item.heureDebut}</td>
+    <td>{item.heureFin}</td>
+    <td>{item.etat}</td>
+    <td>icone de suppression</td>
+  </tr>
+))}
 
-        ))}
         </tbody>
       </table>
     </div>

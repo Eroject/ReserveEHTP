@@ -67,10 +67,10 @@ export default function TimeReservation({ type, onSelectTime , value}) {
       {/*{isCardOpen && (
         {/*<Card  sx={{ width: '300px', padding: 3, marginTop: 2 }}>*/}
           <LocalizationProvider dateAdapter={AdapterDateFns}  >
-            {/* Passer le ref à TimePicker */}
+            
             <TimePicker
              
-              label={type === 'start' ? 'heure de début' : 'heure de fin'}
+              label={type === 'start' ? 'heure début' : 'heure fin'}
               value={value}
               onChange={handleTimeChange}
               renderInput={(params) => <TextField {...params} />}

@@ -4,8 +4,8 @@ import './../styles/SendRequest.css';
 
 export default function SendRequest(){
     return(
-        <div>
-        <h2>Demande de réservation</h2>
+        <div style={{ marginTop: '0px' }}>
+        <h2 style={{ marginTop: '0px' }}>Demande de réservation</h2>
         <RequestForm/>
         
 
