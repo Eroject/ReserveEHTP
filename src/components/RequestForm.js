@@ -21,7 +21,7 @@ export default function RequestForm() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const MAX_FILE_SIZE = 10 * 1024 * 1024;
+  const MAX_FILE_SIZE = 2 * 1024 * 1024;
   const BASE_URL = "http://192.168.157.233:8000/api";
 
   const { handleSubmit } = useForm();
@@ -51,7 +51,7 @@ export default function RequestForm() {
         return;
       }
       if (selectedFile.size > MAX_FILE_SIZE) {
-        toast.error("La taille du fichier dépasse la limite de 10 Mo.", {
+        toast.error(`La taille du fichier dépasse la limite de ${MAX_FILE_SIZE} Mo.`, {
           position: "top-center",
         });
         setFormData((prev) => ({ ...prev, fichier: null, fichier_metadata: null }));
