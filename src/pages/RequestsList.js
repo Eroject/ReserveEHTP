@@ -64,7 +64,11 @@ export default function RequestsList(){
     <td>{item.date}</td>
     <td>{item.heureDebut}</td>
     <td>{item.heureFin}</td>
-    <td>{item.etat}</td>
+    <td style={{
+  color: item.etat === 'approuvé' ? 'green' :
+         item.etat === 'rejeté' ? 'red' :
+         'gray'
+}}>{item.etat}</td>
     <td><DeleteIcon /></td>
 
   </tr>
