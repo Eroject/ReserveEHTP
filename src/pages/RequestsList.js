@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import DeleteIcon from '@mui/icons-material/Delete';
+
 import "./../styles/RequestsList.css";
 
 export default function RequestsList(){
@@ -8,7 +10,7 @@ export default function RequestsList(){
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1); // Page actuelle
   const [itemsPerPage] = useState(5); // Nombre d'éléments par page
-  const [totalPages, setTotalPages] = useState(8); // Nombre total de pages
+  const [totalPages, setTotalPages] = useState(6); // Nombre total de pages
 
   
   // Gestion du changement de page
@@ -50,7 +52,7 @@ export default function RequestsList(){
           <th>Heure Début</th>
           <th>Heure Fin</th>
           <th>Etat</th>
-          <th></th>
+          <th>Supprimer</th>
         </tr>
       </thead>
       <tbody>
@@ -63,31 +65,36 @@ export default function RequestsList(){
     <td>{item.heureDebut}</td>
     <td>{item.heureFin}</td>
     <td>{item.etat}</td>
-    <td>icone de suppression</td>
+    <td><DeleteIcon /></td>
+
   </tr>
+  
 ))}
 
         </tbody>
       </table>
     </div>
 
-     {/* Pagination */}
-     <div style={{ marginTop: "10px" }}>
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                key={index}
-                onClick={() => handlePageChange(index + 1)}
-                style={{
-                  margin: "0 5px",
-                  backgroundColor: currentPage === index + 1 ? "#007bff" : "#fff",
-                  color: currentPage === index + 1 ? "#fff" : "#000",
-                  border: "1px solid #ccc",
-                }}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
+     {/* Pagination en bas */}
+     <div style={{ textAlign: "center", marginTop: "300px", position:"fixed", marginLeft:"35%"}}>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index}
+            onClick={() => handlePageChange(index + 1)}
+            style={{
+              margin: "0 5px",
+              padding: "5px 10px",
+              backgroundColor: currentPage === index + 1 ? "#ccc" : "#fff",
+              color: currentPage === index + 1 ? "#fff" : "#000",
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+          >
+            {index + 1}
+          </button>
+        ))}
+      </div>
          </div>
   );
 };
