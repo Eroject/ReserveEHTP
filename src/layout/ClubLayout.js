@@ -125,12 +125,10 @@ export default function ClubDashboard() {
   };
 
   const menuItems = [
-    { text: 'Dashboard', route:'/', icon: <HomeIcon /> },
-    { text: 'Calendrier', route:CLUB_SEND_REQUEST_ROUTE, icon: <EventIcon /> },
-    { text: 'Send email', route:CLUB_REQUEST_HISTORY_ROUTE, icon: <PieChartIcon /> },
-    { text: 'Drafts', icon: <HomeIcon /> },
+    { text: 'réservation', route: CLUB_SEND_REQUEST_ROUTE, icon: <EventIcon /> },
+    { text: 'suivi', route: CLUB_REQUEST_HISTORY_ROUTE, icon: <PieChartIcon /> },
   ];
-
+  
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -166,67 +164,77 @@ export default function ClubDashboard() {
           >
             <MenuIcon />
           </IconButton>
-
+  
           {!open && (
             <Typography variant="h6" noWrap component="div" sx={{ color: '#444444' }}>
-              Welcome {/* {user.firstname} {user.lastname} */}  {/* Si vous avez un utilisateur connecté, décommentez cette ligne */}
+              Bonjour {/* {user.firstname} {user.lastname} */}
             </Typography>
           )}
           <Box sx={{ flexGrow: 1 }} />
-          { <IconButton color="inherit" /*aria-label="logout" onClick={logout}*/>
+          <IconButton color="inherit">
             <LogoutIcon sx={{ color: '#000000' }} />
-          </IconButton> }
-          { <IconButton color="inherit" aria-label="home" sx={{ marginRight: 2 }}>
+          </IconButton>
+          <IconButton color="inherit" sx={{ marginRight: 2 }}>
             <PermIdentityIcon sx={{ color: '#000000' }} />
-          </IconButton> }
+          </IconButton>
         </Toolbar>
       </AppBar>
-      <Divider />
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             <CloseIcon />
           </IconButton>
-          @ logo ehtp reminder
+          <img src="/pictures/ehtp_logo.png" alt="Logo EHTP" style={{height:"100%", width:"100%", marginLeft:"0"}}/>
         </DrawerHeader>
         <Divider />
         <List>
-          {menuItems.map((item) => (
-            <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton component={Link} to={item.route} sx={[{ minHeight: 48, px: 2.5 }, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}>
-                <ListItemIcon
-                  sx={{
-                    ...iconStyle(open),
-                    minWidth: 0,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    display: 'flex',
-                  }}
-                >
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.text}
-                  sx={[
-                    {
-                      margin: 0,
-                      lineHeight: '48px',
-                    },
-                    open
-                      ? { opacity: 1, paddingLeft: '16px' }
-                      : { opacity: 0 },
-                  ]}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+  {menuItems.map((item) => (
+    <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
+      <ListItemButton
+        component={Link}
+        to={item.route}
+        sx={{
+          justifyContent: 'center',
+          minHeight: 72, // Plus d'espace pour texte + icône
+          display: 'flex',
+          flexDirection: 'column', // Empile icône et texte
+          alignItems: 'center',
+        }}
+      >
+        <ListItemIcon
+          sx={{
+            justifyContent: 'center',
+            display: 'flex',
+            minWidth: 0,
+          }}
+        >
+          {item.icon}
+        </ListItemIcon>
+        <ListItemText
+          primary={item.text}
+          primaryTypographyProps={{
+            variant: 'caption', // Petite taille de texte
+            textAlign: 'center',
+            color: '#000', // Couleur du texte
+          }}
+          sx={{
+            opacity: 1, // Toujours visible
+            marginTop: '4px', // Espace entre icône et texte
+          }}
+        />
+      </ListItemButton>
+    </ListItem>
+  ))}
+</List>
+
         <Divider />
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Outlet/>
+        <Outlet />
       </Box>
     </Box>
   );
+  
+  
 }
