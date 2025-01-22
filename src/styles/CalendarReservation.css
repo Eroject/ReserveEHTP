@@ -1,4 +1,19 @@
 
+#calendarRequestBox{
+  width:100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.3);
+  
+  
+}
+.calendar-reservation-button:hover {
+  transform: scale(1.05); /* Agrandissement de l'élément */
+ 
+  border-color: black; /* Changement de la couleur de la bordure en bleu */
+  
+}
+
 .calendar-reservation-button {
   width: 100%;
   height: 100%;
@@ -6,23 +21,19 @@
   align-items: center;
   justify-content: center;
   background-color: white;
+  border:none;
   color: #555;
-  
   padding: 10px 15px;
   font-size: 14px;
   font-weight: 600;
-  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.3);
-  
   cursor: pointer;
   transition: transform 0.3s ease-in-out, background-color 0.3s ease, border-color 0.3s ease; /* Transition fluide */
-}
-
-.calendar-reservation-button:hover {
-  transform: scale(1.05); /* Agrandissement de l'élément */
-  background-color: white; /* Fond blanc au survol */
-  border-color: #007bff; /* Changement de la couleur de la bordure en bleu */
+  
+  
   
 }
+
+
 
 .calendar-reservation-button span{
   color:#374151;
@@ -62,25 +73,13 @@
   margin-bottom: 10px;
   text-align: center;
   color: #555; /* Texte en gris */
-  border: 1px solid #ccc; /* Contour gris autour du texte */
+  
   padding: 4px; /* Espacement interne */
-  border-radius: 4px; /* Coins arrondis */
+  
 }
 
-#calendarRequestBox #calendarRequestBox2 .MuiButton-root {
-  margin-top: 10px;
-  width: 100%;
-  background-color: #5f27cd;
-  color: #fff;
-  border: 1px solid #ccc; /* Contour gris autour du bouton */
-  border-radius: 4px; /* Coins arrondis */
-  transition: background-color 0.3s;
-}
 
-#calendarRequestBox #calendarRequestBox2 .MuiButton-root:hover {
-  background-color: #6f2bd3;
-  border-color: #ccc; /* Contour légèrement plus foncé au survol */
-}
+
 
 
 
@@ -97,8 +96,7 @@
   margin: 20px;
   height: 55px;
   margin-top: 3%;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  
 }
 
 /* Bouton principal */
@@ -110,7 +108,7 @@
   justify-content: center;
   background-color: white;
   color: #555;
-  border-radius: 8px;
+ 
   padding: 10px 15px;
   font-size: 14px;
   font-weight: 600;
@@ -138,7 +136,7 @@
   left: 0;
   z-index: 10;
   background-color: #ffffff; /* Fond blanc */
-  border-radius: 10px;
+  
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   animation: fadeIn 0.3s ease;

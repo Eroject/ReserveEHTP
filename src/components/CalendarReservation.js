@@ -49,7 +49,7 @@ export default function CalendarReservation ({onSelectDate,value}) {
     
     <Box id="calendarRequestBox">
       {/* Bouton avec icône de triangle */}
-      <Button onClick={handleClick} variant="outlined"  className="calendar-reservation-button">
+      <Button onClick={handleClick}   className="calendar-reservation-button">
       <span>{value ? value.toLocaleDateString('fr-FR') : "Date"}</span>
      <ExpandMore sx={{ marginLeft: '8px' }} id="icone-triangle"/>
       </Button>
